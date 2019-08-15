@@ -5,7 +5,8 @@ cmake_minimum_required(VERSION 3.5.1)
 project(graphs-algorithms)
 
 # creates the variable EXEC and sets it to hello
-set(EXEC hello)
+set(EXEC main)
+set(EXEC_DJIKSTRA djikstra)
 
 # set the C++14 standard
 set(CMAKE_CXX_STANDARD 14)
@@ -14,7 +15,9 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(includes)
 
 # puts all .cpp files inside src to the SOURCES variable
-file(GLOB SOURCES src/*.cpp)
+file(GLOB SOURCES src/main.cpp src/graph.cpp)
+file(GLOB SOURCES_DJIKSTRA src/djikstra.cpp src/graph.cpp)
 
 # compiles the files defined by SOURCES to generate the executable defined by EXEC
 add_executable(${EXEC} ${SOURCES})
+add_executable(${EXEC_DJIKSTRA} ${SOURCES_DJIKSTRA})
