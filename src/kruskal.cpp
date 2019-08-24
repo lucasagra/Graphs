@@ -62,7 +62,7 @@ int kruskal(vector<weightPair> edges, int num_V)
 
 	// Iterate through all sorted edges 
 	vector<weightPair>::iterator i; 
-	for (i=edges.begin(); i != edges.end(); i++) 
+	for (i = edges.begin(); i != edges.end(); i++) 
 	{ 
 		int u = i->second.first; 
 		int v = i->second.second; 
@@ -74,7 +74,7 @@ int kruskal(vector<weightPair> edges, int num_V)
 		if (set_u != set_v) 
 		{ 
 			// Current edge will be in the MST 
-			cout << "Edge from " << u << " to " << v << endl; 
+			cout << "Edge from " << u << " to " << v << " - weight: " << i->first << endl; 
 
 			// Update MST weight 
 			mst_wt += i->first; 

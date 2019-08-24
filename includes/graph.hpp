@@ -4,8 +4,8 @@
 #include <vector>
 using namespace std;
 
-typedef list<pair<int,int>> AdjList;
-typedef pair<int,int> FromTo;
+typedef list<pair<int, int>> AdjList;
+typedef pair<int, int> FromTo;
 typedef pair<int, FromTo> weightPair;
 typedef vector<weightPair> weightVec;
 

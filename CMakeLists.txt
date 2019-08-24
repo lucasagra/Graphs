@@ -8,6 +8,7 @@ project(graphs-algorithms)
 set(EXEC main)
 set(EXEC_DJIKSTRA djikstra)
 set(EXEC_KRUSKAL kruskal)
+set(EXEC_PRIM prim)
 
 # set the C++14 standard
 set(CMAKE_CXX_STANDARD 14)
@@ -19,8 +20,10 @@ include_directories(includes)
 file(GLOB SOURCES src/main.cpp src/graph.cpp)
 file(GLOB SOURCES_DJIKSTRA src/djikstra.cpp src/graph.cpp)
 file(GLOB SOURCES_KRUSKAL src/kruskal.cpp src/graph.cpp)
+file(GLOB SOURCES_PRIM src/prim.cpp src/graph.cpp)
 
 # compiles the files defined by SOURCES to generate the executable defined by EXEC
 add_executable(${EXEC} ${SOURCES})
 add_executable(${EXEC_DJIKSTRA} ${SOURCES_DJIKSTRA})
 add_executable(${EXEC_KRUSKAL} ${SOURCES_KRUSKAL})
+add_executable(${EXEC_PRIM} ${SOURCES_PRIM})
