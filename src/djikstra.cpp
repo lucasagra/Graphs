@@ -29,9 +29,10 @@ void dijkstra(Graph graph, int src) {
 
         pq.pop();
         
-        for (list<gPair>::iterator i = graph.adjLists[u].begin(); i != graph.adjLists[u].end(); ++i) {
-            int v = (*i).first;
-            int w = (*i).second;
+        list<gPair>::iterator i;
+        for (i = graph.adjLists[u].begin(); i != graph.adjLists[u].end(); ++i) {
+            int v = i->first;
+            int w = i->second;
 
             //cout << "Adjacents from: " << u << " is " << v << " with " << w << endl;
 
@@ -42,9 +43,9 @@ void dijkstra(Graph graph, int src) {
         }
     }
     
-    printf("from \t dist\n");
-    for (int i = 0; i < numV; ++i) 
-        printf("%d \t %d\n", i, dist[i]); 
+    cout << "from \t dist" << endl;
+    for (int i = 0; i < numV; ++i)
+        cout << i << "\t" << dist[i] << endl;
 
 }
 
