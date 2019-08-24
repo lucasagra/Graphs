@@ -14,7 +14,7 @@ int prim(Graph graph)
     int parents[graph.num_v];
     bool visited[graph.num_v];
 
-    priority_queue<gPair, vector<gPair>, greater<gPair> > *pq = new priority_queue<gPair, vector<gPair>, greater<gPair> >;
+    priority_queue<gPair, vector<gPair>, greater<gPair> > pq;
 
     for(int i = 0; i < graph.num_v; ++i){
         key[i] = INT_MAX;
@@ -23,13 +23,13 @@ int prim(Graph graph)
     }
 
     key[0] = 0;
-    (*pq).push({key[0], 0});
+    pq.push({key[0], 0});
 
-    while(!(*pq).empty()) {
-        int u = (*pq).top().second;
+    while(!pq.empty()) {
+        int u = pq.top().second;
         visited[u] = true;
         
-        (*pq).pop();
+        pq.pop();
 
         AdjList::iterator i; 
         for (i = graph.adjLists[u].begin(); i != graph.adjLists[u].end(); ++i) {
@@ -39,7 +39,7 @@ int prim(Graph graph)
             if (!visited[v] && w < key[v]) {
                 key[v] = w;
                 parents[v] = u;
-                (*pq).push({w, v});
+                pq.push({w, v});
             }
         }
     }
@@ -49,7 +49,6 @@ int prim(Graph graph)
         mst_cost += key[i];
     }
 
-    delete(pq);
     return mst_cost;
 } 
 
