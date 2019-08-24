@@ -6,8 +6,8 @@ using namespace std;
 
 typedef pair<int, int> gPair;
 
-int prim(Graph graph) 
-{ 
+int prim(Graph graph) {
+
     int mst_cost = 0;
     
     int key[graph.num_v];
@@ -26,6 +26,7 @@ int prim(Graph graph)
     pq.push({key[0], 0});
 
     while(!pq.empty()) {
+        
         int u = pq.top().second;
         visited[u] = true;
         
@@ -52,8 +53,8 @@ int prim(Graph graph)
     return mst_cost;
 } 
 
-int main() 
-{ 
+int main() {
+     
 	int V = 9; 
 	Graph g = Graph(V); 
 
