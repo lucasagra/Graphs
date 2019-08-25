@@ -5,9 +5,8 @@
 using namespace std;
 
 typedef list<pair<int, int>> AdjList;
-typedef pair<int, int> FromTo;
-typedef pair<int, FromTo> weightPair;
-typedef vector<weightPair> weightVec;
+
+typedef vector<pair<int, pair<int, int>>> EdgeVec;
 
 class Graph {
 
@@ -16,7 +15,7 @@ class Graph {
         int num_e;
         AdjList* adjLists;
         Graph(int V);
-        weightVec getVectorOfWeights(); // vec{weight, {src, dest}}
+        EdgeVec getEdges(); // vec{weight, {src, dest}}
         void addEdge(int src, int dest, int weight);
         void addEdge(int src, int dest);
         void print();

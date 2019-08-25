@@ -21,9 +21,9 @@ void Graph::addEdge(int src, int dest){
     num_e++;
 }
 
-vector<weightPair> Graph::getVectorOfWeights() {
+EdgeVec Graph:: getEdges() {
 
-    vector<weightPair> result = vector<weightPair>(num_e);
+    EdgeVec result = EdgeVec(num_e);
 
     for(int i = 0; i < num_v; ++i) {
         int u = i;
@@ -33,7 +33,7 @@ vector<weightPair> Graph::getVectorOfWeights() {
             int v = j->first;
             int w = j->second;
 
-            weightPair wpair = {w, {u, v}};
+            pair<int, pair<int, int>> wpair = {w, {u, v}};
 
             result.push_back(wpair);
         }

@@ -53,7 +53,7 @@ struct DisjointSets
 	} 
 }; 
 
-int kruskal(vector<weightPair> edges, int num_V) 
+int kruskal(EdgeVec edges, int num_V) 
 { 
 	int mst_wt = 0;
 
@@ -61,7 +61,7 @@ int kruskal(vector<weightPair> edges, int num_V)
 	DisjointSets ds(num_V); 
 
 	// Iterate through all sorted edges 
-	vector<weightPair>::iterator i; 
+	EdgeVec::iterator i; 
 	for (i = edges.begin(); i != edges.end(); i++) 
 	{ 
 		int u = i->second.first; 
@@ -109,7 +109,7 @@ int main()
 
 	cout << "Edges of MST are \n\n"; 
 
-	int mst_wt = kruskal(g.getVectorOfWeights(), g.num_v); 
+	int mst_wt = kruskal(g.getEdges(), g.num_v); 
 
 	cout << "\nWeight of MST is " << mst_wt << endl; 
 
