@@ -6,6 +6,7 @@
 using namespace std; 
   
 #include "../includes/graph.hpp"
+#include "../includes/aux.hpp"
 
 typedef pair<int, int> gPair; 
 
@@ -45,21 +46,19 @@ void dijkstra(Graph graph, int src) {
     
     cout << "from \t dist" << endl;
     for (int i = 0; i < numV; ++i)
-        cout << i << "\t" << dist[i] << endl;
+        cout << i << "\t \t " << dist[i] << endl;
 
 }
 
 
-int main () {
+int main (int argc, char *argv[]) {
 
-    Graph graph = Graph(4);
-    graph.addEdge(0, 1, 10);
-    graph.addEdge(0, 2, 2);
-    graph.addEdge(1, 2, 1);
-    graph.addEdge(2, 3, 1);
-    graph.addEdge(3, 1, 1);
-    graph.addEdge(2, 1, 10);
+    ifstream file;
+    if(!getFile(argc, argv, file)) {
+        exit(0);
+    }
 
+    Graph graph = create_graph(file);
 
     dijkstra(graph, 0);
 

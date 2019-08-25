@@ -1,5 +1,6 @@
 #include<bits/stdc++.h> 
 #include "../includes/graph.hpp"
+#include "../includes/aux.hpp"
 
 using namespace std; 
 
@@ -52,36 +53,17 @@ bool bellman_ford(Graph graph, int src) {
     return true;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     
-    Graph grp(5);
-    grp.addEdge(0, 1, 6);
-    grp.addEdge(0, 2, 7);
-    grp.addEdge(1, 3, 5);
-    grp.addEdge(1, 4, -4);
-    grp.addEdge(1, 2, 8);
-    grp.addEdge(2, 3, -3);
-    grp.addEdge(2, 4, 9);
-    grp.addEdge(3, 1, -2);
-    grp.addEdge(4, 0, 2);
-    grp.addEdge(4, 3, 7);
+    ifstream file;
+    if(!getFile(argc, argv, file)) {
+        exit(0);
+    }
 
-    if (!bellman_ford(grp, 0))
-        std::cout << "Graph contains negative cycle \n \n";
+    Graph graph = create_graph(file);
 
-    Graph grp2(5);
-    grp2.addEdge(0, 1, 6);
-    grp2.addEdge(0, 2, 7);
-    grp2.addEdge(1, 3, 5);
-    grp2.addEdge(1, 4, -4);
-    grp2.addEdge(1, 2, 4); // negative loop here
-    grp2.addEdge(2, 3, -3);
-    grp2.addEdge(2, 4, 9);
-    grp2.addEdge(3, 1, -2);
-    grp2.addEdge(4, 0, 2);
-    grp2.addEdge(4, 3, 7);
+    if (!bellman_ford(graph, 0))
+        cout << "Graph contains negative cycle \n \n";
 
-    if (!bellman_ford(grp2, 0))
-        std::cout << "Graph contains negative cycle \n \n";
-
+    return 0;
 }
