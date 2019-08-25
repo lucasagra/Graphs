@@ -5,6 +5,5 @@ CMakeFiles
 .vscode
 djikstra
 kruskal
-main
 prim
 bellmanford
