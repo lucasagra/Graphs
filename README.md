@@ -1,5 +1,10 @@
 # Graphs
-Graphs Algorithms
+Graphs Algorithms implemented
+
+- [x] Dijkstra
+- [x] Bellman Ford
+- [x] Prim
+- [x] Kruskal
 
 On the main folder:
 To start cmake
