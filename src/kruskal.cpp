@@ -56,7 +56,7 @@ struct DisjointSets
 
 int kruskal(EdgeVec edges, int num_V) 
 { 
-	int mst_wt = 0;
+	int weight = 0;
 
 	// Create disjoint sets 
 	DisjointSets ds(num_V); 
@@ -78,14 +78,14 @@ int kruskal(EdgeVec edges, int num_V)
 			cout << "Edge from " << u << " to " << v << " - weight: " << i->first << endl; 
 
 			// Update MST weight 
-			mst_wt += i->first; 
+			weight += i->first; 
 
 			// Merge sets 
 			ds.merge(set_u, set_v); 
 		} 
 	} 
 
-	return mst_wt; 
+	return weight; 
 } 
 
 int main(int argc, char *argv[]) { 
