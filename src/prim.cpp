@@ -26,7 +26,7 @@ int prim(Graph graph) {
     pq.push({key[0], 0});
 
     while(!pq.empty()) {
-        
+
         int u = pq.top().second;
         visited[u] = true;
         
