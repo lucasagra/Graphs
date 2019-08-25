@@ -1,5 +1,5 @@
-// C++ program for Kruskal's algorithm to find Minimum Spanning Tree of a given connected, undirected and weighted graph 
-#include<bits/stdc++.h> 
+// MST given connected, undirected and weighted graph 
+#include <bits/stdc++.h> 
 #include "../includes/graph.hpp"
 #include "../includes/aux.hpp"
 
@@ -61,7 +61,7 @@ int kruskal(EdgeVec edges, int num_V)
 	// Create disjoint sets 
 	DisjointSets ds(num_V); 
 
-	// Iterate through all sorted edges 
+	// For each edge (sorted)
 	EdgeVec::iterator i; 
 	for (i = edges.begin(); i != edges.end(); i++) 
 	{ 
