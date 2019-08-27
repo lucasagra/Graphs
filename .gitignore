@@ -7,3 +7,5 @@ dijkstra
 kruskal
 prim
 bellmanford
+bfs
+dfs
