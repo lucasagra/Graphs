@@ -1,6 +1,8 @@
 # Graphs
 Graphs Algorithms implemented
 
+- [x] BFS
+- [x] DFS
 - [x] Dijkstra
 - [x] Bellman Ford
 - [x] Prim

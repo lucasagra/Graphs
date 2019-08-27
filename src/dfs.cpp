@@ -48,7 +48,7 @@ int main (int argc, char *argv[]) {
 
     Graph graph = create_graph(file);
 
-    graph_dfs(graph, 7);
+    graph_dfs(graph, 0);
 
     return 0;
 }

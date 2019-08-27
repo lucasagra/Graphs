@@ -54,7 +54,7 @@ int main (int argc, char *argv[]) {
 
     Graph graph = create_graph(file);
 
-    bfs(graph, 7);
+    bfs(graph, 0);
 
     return 0;
 }
