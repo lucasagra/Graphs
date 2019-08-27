@@ -18,11 +18,13 @@ void dijkstra(Graph graph, int src) {
     int numV = graph.num_v;
 
     vector<int> dist(numV, INT_MAX);
+    vector<int> parent(numV, -1);
     priority_queue<gPair> pq;
 
     dist[src] = 0;
+    parent[src] = src;
 
-    pq.push(make_pair(dist[src], src));
+    pq.push({dist[src], src});
 
     while (!pq.empty()) {
 
@@ -39,14 +41,19 @@ void dijkstra(Graph graph, int src) {
 
             if(dist[v] > (dist[u] + w)) {
                 dist[v] = dist[u] + w;
-                pq.push(make_pair(dist[v], v));
+                parent[v] = u;
+                pq.push({dist[v], v});
             }
         }
     }
     
-    cout << "from \t dist" << endl;
+    cout << "to \t dist" << endl;
     for (int i = 0; i < numV; ++i)
-        cout << i << "\t \t " << dist[i] << endl;
+        cout << i << "\t " << dist[i] << endl;
+
+    cout << endl << "vetex \t parent" << endl;
+    for (int i = 0; i < numV; ++i)
+        cout << i << "\t " << parent[i] << endl;
 
 }
 
