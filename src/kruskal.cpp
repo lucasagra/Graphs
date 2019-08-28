@@ -1,23 +1,22 @@
-// MST given connected, undirected and weighted graph 
 #include <bits/stdc++.h> 
 #include "../includes/graph.hpp"
 #include "../includes/aux.hpp"
 
 using namespace std; 
 
-struct DisjointSets {
+struct Union_Find {
 
 	int *parent, *rnk; 
 	int n; 
 
-	DisjointSets(int n) {
+	Union_Find(int n) {
 
 		// Allocate memory 
 		this->n = n; 
 		parent = new int[n+1]; 
 		rnk = new int[n+1]; 
 
-		// Initially, all vertices are in different sets and have rank 0. 
+		// all vertices are in different sets and start with rank 0. 
 		for (int i = 0; i <= n; i++) { 
 			
 			rnk[i] = 0; 
@@ -27,8 +26,7 @@ struct DisjointSets {
 		} 
 	} 
 
-	// Find the parent of a node 'u' 
-	// Path Compression 
+	// Find the parent of a node 'u' // Path Compression 
 	int find(int u) { 
 
 		// Make the parent of the nodes in the path from u--> parent[u] point to parent[u]
@@ -59,7 +57,7 @@ int kruskal(EdgeVec edges, int num_V) {
 	int weight = 0;
 
 	// Create disjoint sets 
-	DisjointSets ds(num_V); 
+	Union_Find ds(num_V); 
 
 	// For each edge (sorted)
 	EdgeVec::iterator i; 
@@ -71,7 +69,7 @@ int kruskal(EdgeVec edges, int num_V) {
 		int set_u = ds.find(u); 
 		int set_v = ds.find(v); 
 
-		// Check if is a cicle or not (Cycle is created if u and v belong to same set) 
+		// Check if is a cicle or not
 		if (set_u != set_v) {
 
 			// Current edge will be in the MST 
