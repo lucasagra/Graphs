@@ -8,7 +8,7 @@ using namespace std;
 #include "../includes/graph.hpp"
 #include "../includes/aux.hpp"
 
-typedef pair<int, int> gPair; 
+typedef pair<int, int> intPair; 
 
 
 void dijkstra(Graph graph, int src) {
@@ -19,7 +19,7 @@ void dijkstra(Graph graph, int src) {
 
     vector<int> dist(numV, INT_MAX);
     vector<int> parent(numV, -1);
-    priority_queue<gPair> pq;
+    priority_queue<intPair, vector<intPair>, greater<intPair> > pq;
 
     dist[src] = 0;
     parent[src] = src;
@@ -32,7 +32,7 @@ void dijkstra(Graph graph, int src) {
 
         pq.pop();
         
-        list<gPair>::iterator i;
+        list<intPair>::iterator i;
         for (i = graph.adjLists[u].begin(); i != graph.adjLists[u].end(); ++i) {
             int v = i->first;
             int w = i->second;

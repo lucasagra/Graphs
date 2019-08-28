@@ -5,21 +5,21 @@
 
 using namespace std; 
 
-struct DisjointSets 
-{ 
+struct DisjointSets {
+
 	int *parent, *rnk; 
 	int n; 
 
-	DisjointSets(int n) 
-	{ 
+	DisjointSets(int n) {
+
 		// Allocate memory 
 		this->n = n; 
 		parent = new int[n+1]; 
 		rnk = new int[n+1]; 
 
 		// Initially, all vertices are in different sets and have rank 0. 
-		for (int i = 0; i <= n; i++) 
-		{ 
+		for (int i = 0; i <= n; i++) { 
+			
 			rnk[i] = 0; 
 
 			//every element is parent of itself 
@@ -29,8 +29,8 @@ struct DisjointSets
 
 	// Find the parent of a node 'u' 
 	// Path Compression 
-	int find(int u) 
-	{ 
+	int find(int u) { 
+
 		// Make the parent of the nodes in the path from u--> parent[u] point to parent[u]
 		if (u != parent[u]) 
 			parent[u] = find(parent[u]); 
@@ -38,8 +38,8 @@ struct DisjointSets
 	} 
 
 	// Union by rank 
-	void merge(int x, int y) 
-	{ 
+	void merge(int x, int y) { 
+
 		x = find(x), y = find(y); 
 
 		// Make tree with smaller height a subtree of the other tree
@@ -54,8 +54,8 @@ struct DisjointSets
 	} 
 }; 
 
-int kruskal(EdgeVec edges, int num_V) 
-{ 
+int kruskal(EdgeVec edges, int num_V) {
+
 	int weight = 0;
 
 	// Create disjoint sets 
@@ -63,8 +63,8 @@ int kruskal(EdgeVec edges, int num_V)
 
 	// For each edge (sorted)
 	EdgeVec::iterator i; 
-	for (i = edges.begin(); i != edges.end(); i++) 
-	{ 
+	for (i = edges.begin(); i != edges.end(); i++) {
+
 		int u = i->second.first; 
 		int v = i->second.second; 
 
@@ -72,8 +72,8 @@ int kruskal(EdgeVec edges, int num_V)
 		int set_v = ds.find(v); 
 
 		// Check if is a cicle or not (Cycle is created if u and v belong to same set) 
-		if (set_u != set_v) 
-		{ 
+		if (set_u != set_v) {
+
 			// Current edge will be in the MST 
 			cout << "Edge from " << u << " to " << v << " - weight: " << i->first << endl; 
 
@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
 
 	int mst_wt = kruskal(graph.getEdges(), graph.num_v); 
 
-	cout << "\nWeight of MST is " << mst_wt << endl; 
+	cout << endl << "Weight of MST is " << mst_wt << endl; 
 
 	return 0; 
 } 

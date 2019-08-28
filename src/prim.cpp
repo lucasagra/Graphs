@@ -4,26 +4,23 @@
 
 using namespace std; 
 
-typedef pair<int, int> gPair;
+typedef pair<int, int> intPair;
 
 int prim(Graph graph) {
 
+	cout << "Running Prim \n\n"; 
+
     int mst_cost = 0;
+
+    vector<int> lowestDist(graph.num_v, INT_MAX);
+    vector<int> parents(graph.num_v, -1);
+    vector<bool> visited(graph.num_v, false);
     
-    int key[graph.num_v];
-    int parents[graph.num_v];
-    bool visited[graph.num_v];
+    priority_queue<intPair, vector<intPair>, greater<intPair> > pq;
+    
 
-    priority_queue<gPair, vector<gPair>, greater<gPair> > pq;
-
-    for(int i = 0; i < graph.num_v; ++i){
-        key[i] = INT_MAX;
-        parents[i] = -1;
-        visited[i] = false;
-    }
-
-    key[0] = 0;
-    pq.push({key[0], 0});
+    lowestDist[0] = 0;
+    pq.push({lowestDist[0], 0});
 
     while(!pq.empty()) {
 
@@ -37,8 +34,8 @@ int prim(Graph graph) {
             int v = i->first;
             int w = i->second;
 
-            if (!visited[v] && w < key[v]) {
-                key[v] = w;
+            if (!visited[v] && w < lowestDist[v]) {
+                lowestDist[v] = w;
                 parents[v] = u;
                 pq.push({w, v});
             }
@@ -46,8 +43,8 @@ int prim(Graph graph) {
     }
 
     for (int i = 1; i < graph.num_v; ++i) {
-        cout << "Edge from " << parents[i] << " to " << i << " - weight: " << key[i] << endl; 
-        mst_cost += key[i];
+        cout << "Edge from " << parents[i] << " to " << i << " - weight: " << lowestDist[i] << endl; 
+        mst_cost += lowestDist[i];
     }
 
     return mst_cost;
@@ -61,8 +58,6 @@ int main(int argc, char *argv[]) {
     }
 
     Graph graph = create_graph(file);
-
-	cout << "Edges of MST are \n\n"; 
 
 	int mst_wt = prim(graph); 
 

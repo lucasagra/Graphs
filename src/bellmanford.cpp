@@ -6,13 +6,13 @@ using namespace std;
 
 bool bellman_ford(Graph graph, int src) {
 
-    int dist[graph.num_v];
+    cout << "Running Bellman Ford from source: " << src << endl;
 
-    for (int i = 0; i < graph.num_v; ++i) {
-        dist[i] = INT_MAX;
-    }
+    vector<int> dist(graph.num_v, INT_MAX);
+    vector<int> parent(graph.num_v, -1);
 
     dist[src] = 0;
+    parent[src] = src;
 
     // for each vertex
     for (int i = 1; i < graph.num_v; i++) {
@@ -26,6 +26,7 @@ bool bellman_ford(Graph graph, int src) {
                 int w = k->second;
 
                 if(dist[u] != INT_MAX && dist[u] + w < dist[v]) {
+                    parent[v] = u;
                     dist[v] = dist[u] + w;
                 }
             }
@@ -41,16 +42,22 @@ bool bellman_ford(Graph graph, int src) {
             int w = k->second;
 
             if(dist[u] != INT_MAX && dist[u] + w < dist[v]) {
+
+                cout << "Graph contains negative cycle \n \n";
                 return false; // negative cycle is detected
             }
         }
     }
 
-    cout << "Vertex Distance from Source" << endl; 
+    cout << "to \t dist" << endl;
     for (int i = 0; i < graph.num_v; ++i) 
-        cout << "\t\t" << i << "\t\t" << dist[i] << endl;
+        cout << i << "\t " << dist[i] << endl;
 
+    cout << endl << "vertex \t parent" << endl;
+    for (int i = 0; i < graph.num_v; ++i)
+        cout << i << "\t " << parent[i] << endl;
     return true;
+
 }
 
 int main(int argc, char *argv[]) {
@@ -62,8 +69,7 @@ int main(int argc, char *argv[]) {
 
     Graph graph = create_graph(file);
 
-    if (!bellman_ford(graph, 0))
-        cout << "Graph contains negative cycle \n \n";
+    bellman_ford(graph, 0);
 
     return 0;
 }

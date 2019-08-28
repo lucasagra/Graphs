@@ -11,7 +11,7 @@ using namespace std;
 typedef pair<int, int> gPair; 
 
 void dfs(Graph graph, int src, int parent[]) {
-
+    
     list<gPair>::iterator i;
     for(i = graph.adjLists[src].begin(); i != graph.adjLists[src].end(); i++) {
         if(parent[i->first] == -1) {
@@ -24,6 +24,9 @@ void dfs(Graph graph, int src, int parent[]) {
 }
 
 void graph_dfs(Graph graph, int src) {
+
+    cout << "Running DFS from source: " << src << endl;
+    
     int parent[graph.num_v];
 
     for(int i = 0; i < graph.num_v; ++i)

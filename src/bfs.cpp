@@ -12,6 +12,9 @@ typedef pair<int, int> gPair;
 
 
 void bfs(Graph graph, int src) {
+
+    cout << "Running BFS from source: " << src << endl;
+
     int parent[graph.num_v];
     for (int i = 0; i < graph.num_v; i++)
         parent[i] = -1;
